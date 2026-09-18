@@ -1,6 +1,7 @@
 inventory = 0
 error_count = 0
 success_count = 0
+
 def valid_input():
     user_input = input("Enter a stock quantity : ")
     if user_input == "quit":
@@ -11,6 +12,12 @@ def valid_input():
     elif int(user_input)< 0:
         print("The quantity entered is negative! Please try again with a non-negative number")
         return None
+    else:
+        return int(user_input)
+
+def process_delivery(current_total, new_value):
+    new_total = current_total + new_value
+    return new_total
 
 while True:
     clean_input = valid_input()
@@ -20,7 +27,7 @@ while True:
         error_count += 1
     else:
         success_count += 1
-        inventory += int(clean_input)
+        inventory = process_delivery(inventory,clean_input)
     if inventory > 500:
         print ("Alert! Product has been overstocked!")
         break
