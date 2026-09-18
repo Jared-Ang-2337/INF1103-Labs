@@ -19,6 +19,10 @@ def process_delivery(current_total, new_value):
     new_total = current_total + new_value
     return new_total
 
+def calculate_tax(amount):
+    tax = amount/10
+    return tax
+
 while True:
     clean_input = valid_input()
     if clean_input == "quit":
